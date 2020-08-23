@@ -4,9 +4,9 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: instance
-    image: docker.io/pycontribs/centos:8
-    pre_build_image: true
+  - name: ubuntu
+    image: ubuntu:bionic
+    pre_build_image: false
 provisioner:
   name: ansible
 verifier:
