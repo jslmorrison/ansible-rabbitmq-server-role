@@ -2,3 +2,29 @@
 # vars file for ansible-rabbitmq-server-role
 pip_install_packages:
   - name: requests
+
+list_of_exchanges:
+  - { name: 'exchange1', type: 'topic' }
+  - { name: 'exchange1-fail', type: 'topic' }
+
+list_of_queues:
+  - { 
+      name: 'queue1',
+      dead_letter_exchange: 'exchange1-fail'
+    }
+  - { 
+      name: 'queue1-fail',
+      dead_letter_exchange: ''
+    }
+
+list_of_bindings:
+  - {
+      'source': 'exchange1',
+      'destination': 'queue1',
+      'routing_key': 'q1'
+    }
+  - {
+      'source': 'exchange1-fail',
+      'destination': 'queue1-fail',
+      'routing_key': 'q1'
+    }
