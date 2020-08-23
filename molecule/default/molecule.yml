@@ -4,7 +4,7 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: ubuntu
+  - name: ubuntu_bionic
     image: ubuntu:bionic
     pre_build_image: false
 provisioner:
