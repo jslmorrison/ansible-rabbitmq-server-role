@@ -31,3 +31,9 @@
     state: enabled
   notify:
     - restart rabbitmq-server
+
+- name: Add exchanges
+  rabbitmq_exchange:
+    name: "{{ item.name }}"
+    type: "{{ item.type }}"
+  loop: "{{ list_of_exchanges }}"
