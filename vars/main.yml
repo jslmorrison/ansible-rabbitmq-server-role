@@ -1,2 +1,4 @@
 ---
 # vars file for ansible-rabbitmq-server-role
+pip_install_packages:
+  - name: requests
