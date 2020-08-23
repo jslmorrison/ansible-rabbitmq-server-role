@@ -37,3 +37,9 @@
     name: "{{ item.name }}"
     type: "{{ item.type }}"
   loop: "{{ list_of_exchanges }}"
+
+- name: Add queues
+  rabbitmq_queue:
+    name: "{{ item.name }}"
+    dead_letter_exchange: "{{ item.dead_letter_exchange }}"
+  loop: "{{ list_of_queues }}"
