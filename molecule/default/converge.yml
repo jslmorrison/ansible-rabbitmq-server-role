@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include ansible-rabbitmq-server-role"
+      include_role:
+        name: "ansible-rabbitmq-server-role"
