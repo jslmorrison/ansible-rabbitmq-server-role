@@ -3,3 +3,31 @@
 - name: Display distro info
   debug:
     msg: Hello from {{ ansible_distribution }} {{ ansible_distribution_version }}
+
+- name: add universe repository for bionic
+  apt_repository:
+    repo: deb http://archive.ubuntu.com/ubuntu bionic universe
+    state: present
+  when: ansible_distribution_release == 'bionic'
+
+- include_role:
+    name: geerlingguy.pip
+
+- name: Install RabbitMQ server
+  apt:
+    name: rabbitmq-server
+    state: present
+    update_cache: true
+
+- name: Ensure RabbitMQ server is started
+  service:
+    name: rabbitmq-server
+    state: started
+    enabled: true
+
+- name: Enables the rabbitmq_management plugin
+  rabbitmq_plugin:
+    names: rabbitmq_management
+    state: enabled
+  notify:
+    - restart rabbitmq-server
