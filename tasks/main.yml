@@ -43,3 +43,13 @@
     name: "{{ item.name }}"
     dead_letter_exchange: "{{ item.dead_letter_exchange }}"
   loop: "{{ list_of_queues }}"
+
+- name: Add bindings
+  rabbitmq_binding:
+    login_user: guest
+    login_password: guest
+    name: "{{ item.source }}"
+    destination: "{{ item.destination }}"
+    routing_key: "{{ item.routing_key }}"
+    type: queue
+  loop: "{{ list_of_bindings }}"
