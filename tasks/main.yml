@@ -1,2 +1,5 @@
 ---
 # tasks file for ansible-rabbitmq-server-role
+- name: Display distro info
+  debug:
+    msg: Hello from {{ ansible_distribution }} {{ ansible_distribution_version }}
