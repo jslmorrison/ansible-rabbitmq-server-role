@@ -1,4 +1,4 @@
-Role Name
+RabbitMQ server
 =========
 
 Install RabbitMQ server with example exchange, queues and bindings.
